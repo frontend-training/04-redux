@@ -7,7 +7,7 @@ interface DispatchProps {
     addMovie: (title: string) => Action
 }
 
-const AddTodo = (props: DispatchProps): JSX.Element => (
+const AddMovie = (props: DispatchProps): JSX.Element => (
     <>
         <input id="title-input" type="text" className="form-control add-todo" placeholder="Lord of the Rings, Terminator, etc."/>
         <button
@@ -15,8 +15,10 @@ const AddTodo = (props: DispatchProps): JSX.Element => (
             className="btn btn-success"
             onClick={() => {
                 const title = (document.getElementById('title-input') as HTMLInputElement).value;
-                props.addMovie(title);
-                (document.getElementById('title-input') as HTMLInputElement).value = "";
+                if (title) {
+                    props.addMovie(title);
+                    (document.getElementById('title-input') as HTMLInputElement).value = "";
+                }
             }}
         >
             Add Movie
@@ -28,4 +30,4 @@ const mapDispatchToProps = {
     addMovie
 };
 
-export default connect(null, mapDispatchToProps)(AddTodo);
+export default connect(null, mapDispatchToProps)(AddMovie);

@@ -1,10 +1,10 @@
 import * as React from "react";
 
-const AddTodo = (): JSX.Element => (
+const AddMovie = (): JSX.Element => (
     <>
-        <input type="text" className="form-control add-todo" placeholder="Add movie"/>
-        <button id="checkAll" className="btn btn-success">Mark all as watched</button>
+        <input type="text" className="form-control add-todo" placeholder="Lord of the Rings, Terminator, etc."/>
+        <button id="checkAll" className="btn btn-success">Add Movie</button>
     </>
 );
 
-export default AddTodo;
+export default AddMovie;

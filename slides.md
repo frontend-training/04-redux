@@ -141,7 +141,7 @@ To specify how the state tree is transformed by actions, you write pure reducers
 React Redux is the official React binding for Redux. It lets your React components read data from a Redux store, and dispatch actions to the store to update data.
 
 ```js
-npm install --save react-redux
+npm install --save react-redux redux
 ```
 
 ---

@@ -1,17 +1,20 @@
 import * as React from 'react';
 
-export interface Movie {
-    id: number,
+interface Props {
     name: string,
-    onClick: (number: number) => void
+    watched: boolean,
+    id: number,
+    onClick: (index: number) => void
 }
-const MovieRow = (props:Movie): JSX.Element => (
+
+const MovieRow = (props:Props): JSX.Element => (
     <li className="ui-state-default">
         <div className="checkbox">
             <label>
                 <input
+                    checked={props.watched}
                     type="checkbox"
-                    onClick={() => props.onClick(props.id)} value=""
+                    onChange={() => props.onClick(props.id)} value=""
                 />
                 {props.name}
             </label>

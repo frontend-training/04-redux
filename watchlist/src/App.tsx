@@ -3,9 +3,19 @@ import Counter from "./components/counter";
 import MovieList from './components/movieList';
 import AddMovie from './components/addMovie';
 import './App.css';
+import {connect} from 'react-redux';
 import WatchedMovies from "./components/watchedMovies";
+import {loadMovies} from "./reducer";
 
-class App extends React.Component {
+interface Properties {
+    loadMovies: () => void;
+}
+class App extends React.Component<Properties> {
+
+    componentDidMount(): void {
+        this.props.loadMovies();
+    }
+
     public render() {
         return (
             <div className="container">
@@ -26,4 +36,4 @@ class App extends React.Component {
     }
 }
 
-export default App;
+export default connect(null, {loadMovies})(App);

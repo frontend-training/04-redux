@@ -1,3 +1,7 @@
+import {AnyAction} from "redux";
+import {ThunkAction, ThunkDispatch} from "redux-thunk";
+
+
 export interface Movie {
     name: string,
     watched: boolean,
@@ -41,3 +45,19 @@ export const toggleMovieAsWatched = (id: number): Action => (
         index: id
     }
 );
+
+interface FilmResult {
+    id: string,
+    title: string
+}
+
+export const loadMovies = (): ThunkAction<void, State, void, AnyAction> => (
+    dispatch: ThunkDispatch<State, void, AnyAction>
+) => {
+    fetch("https://ghibliapi.herokuapp.com/films")
+        .then(response => response.json())
+        .then(result => result.map((film: FilmResult) => {
+                return dispatch(addMovie(film.title));
+            })
+        )
+};
